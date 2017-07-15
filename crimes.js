@@ -37,6 +37,7 @@ function mode(c) {
 function create_crime_markers(lat, lng, map_obj) {
   var num_of_crimes = 0;
   var crimes = {};
+  var commited = false;
 
   // a < 36 because it goes up in 3's, and 3 * 12 requests = 36
   for (var a = 0; a < 36; a += 3) {
@@ -46,12 +47,9 @@ function create_crime_markers(lat, lng, map_obj) {
     $.getJSON(request, function(data) {
       var data_len = data.length;
 
-      if (data == []) {
-        document.getElementById("popular_crime").innerText = "None";
-        document.getElementById("num_of_crimes").innerText = 0;
-      }
+      if (data[0] != undefined) {
+        commited = true;
 
-      else {
         for (var i = 0; i < data_len; i++) {
           cat = data[i]["category"]
           lat = data[i]["location"]["latitude"];
@@ -63,7 +61,7 @@ function create_crime_markers(lat, lng, map_obj) {
             crimes[cat] = 1;
           }
 
-          create_marker(lat, lng, (cat+" : "+crimes[cat]), map_obj);
+          create_marker(lat, lng, cat, map_obj);
           num_of_crimes++;
 
           document.getElementById("popular_crime").innerText = mode(crimes);
@@ -71,6 +69,10 @@ function create_crime_markers(lat, lng, map_obj) {
         }
       }
     });
+    if (!commited) {
+      document.getElementById("popular_crime").innerText = "None";
+      document.getElementById("num_of_crimes").innerText = 0;
+    }
   }
 }
 
