@@ -8,8 +8,6 @@ $(document).ready(function(){
   });
 });
 
-// - - - Spacer - - - //
-
 // Maps JS API stuff
 var police_api_dates = [
   "&date=2016-05",
@@ -131,7 +129,7 @@ function draggable_callback(draggable_marker, map_obj, geocoder) {
 function map_callback() {
   var geocoder = new google.maps.Geocoder;
   var shaftesbury = new google.maps.LatLng(51.0046, -2.198083);
-  var map_properties = {center: shaftesbury, zoom: 15, mapTypeId: "satellite" };
+  var map_properties = {center: shaftesbury, zoom: 15, mapTypeId: "hybrid"};
   var map = new google.maps.Map(document.getElementById("google_map"), map_properties);
   var draggable_marker = new google.maps.Marker({
       position: shaftesbury,
