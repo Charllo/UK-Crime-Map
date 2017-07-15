@@ -1,20 +1,21 @@
-var police_api_reqs = [
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-05",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-06",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-07",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-08",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-09",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-10",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-11",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-12",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-01",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-02",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-03",
-  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-04",
+var police_api_dates = [
+  "&date=2016-05",
+  "&date=2016-06",
+  "&date=2016-07",
+  "&date=2016-08",
+  "&date=2016-09",
+  "&date=2016-10",
+  "&date=2016-11",
+  "&date=2016-12",
+  "&date=2017-01",
+  "&date=2017-02",
+  "&date=2017-03",
+  "&date=2017-04",
 ]
 
-var markers = [];
-var marker_positions = [];
+var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
+var markers = []; // To erase markers later
+var marker_positions = []; // So there aren't multiple markers in the same place
 
 function clear_markers(){
   for (var i = 0; i < markers.length; i++) {
@@ -40,9 +41,8 @@ function create_crime_markers(lat, lng, map_obj) {
   var crimes = {};
   var commited = false;
 
-  // a < 36 because it goes up in 3's, and 3 * 12 requests = 36
-  for (var a = 0; a < 36; a += 3) {
-    var request = police_api_reqs[a] + lat + police_api_reqs[a+1] + lng + police_api_reqs[a+2]
+  for (var a = 0; a < 12; a++) {
+    var request = police_api_base_url + lat + "&lng=" + lng + police_api_dates[a]
     console.log("Getting stats for", request)
 
     $.getJSON(request, function(data) {
@@ -91,7 +91,7 @@ function create_marker(lat, lng, title, map_obj){
   }
 }
 
-function draggable_callback(draggable_marker, map_obj) {
+function draggable_callback(draggable_marker, map_obj, geocoder) {
   new_lat = draggable_marker.getPosition().lat()
   new_lng = draggable_marker.getPosition().lng()
 
@@ -101,9 +101,22 @@ function draggable_callback(draggable_marker, map_obj) {
   console.log(new_lat, new_lng);
   clear_markers();
   create_crime_markers(new_lat, new_lng, map_obj);
+
+  geocoder.geocode({"location": {lat: new_lat, lng: new_lng}}, function(results, status) {
+   if (status === "OK") {
+     if (results[1]) {
+       document.getElementById("loc_name").innerText = results[1].formatted_address;
+     } else {
+       document.getElementById("loc_name").innerText = "No results found";
+     }
+   } else {
+     document.getElementById("loc_name").innerText = "Geocoder failed: "+status;
+   }
+ });
 }
 
 function map_callback() {
+  var geocoder = new google.maps.Geocoder;
   var shaftesbury = new google.maps.LatLng(51.0046, -2.198083);
   var map_properties = {center: shaftesbury, zoom: 15, mapTypeId: "satellite" };
   var map = new google.maps.Map(document.getElementById("google_map"), map_properties);
@@ -114,8 +127,8 @@ function map_callback() {
       title: "Drag me",
       icon: "blue_marker.png"
   });
-  google.maps.event.addListener(draggable_marker, 'dragend', function(){draggable_callback(draggable_marker, map);});
-  draggable_callback(draggable_marker, map); // Trigger first load
+  google.maps.event.addListener(draggable_marker, "dragend", function(){draggable_callback(draggable_marker, map, geocoder);});
+  draggable_callback(draggable_marker, map, geocoder); // Trigger first load
 }
 
 function display_help() {

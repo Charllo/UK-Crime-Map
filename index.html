@@ -7,11 +7,24 @@
   <body>
 
     <div id="help-div">
-      <h3>Drag the blue marker to a location</h3>
-      <h3>Each red marker is the approximate location of a crime</h3>
       <h3>
-        Hover over a red marker to see the first crime committed
-        in that specific location
+        This map displays all street-level crimes commited from May 2016 to
+        April 2017 in a 1 mile radius around the blue marker.
+        <br />
+        <br />
+        Crime markers appear in red, and if you hover over them, it will show
+        you the first crime recorded in that specific location
+        <br />
+        <br />
+        Drag the blue marker to a new location to see different areas of crime
+        <br />
+        <br />
+        Each red marker is only the approximate location of a crime, and not
+        exact
+        <br />
+        <br />
+        For more information and the source code, visit the
+        <a href="https://github.com/thatguywiththatname/UK-Crime-Map">Github repository</a>
       </h3>
       <input type="button" onclick="close_help()" value="Close">
     </div>
@@ -19,21 +32,24 @@
     <div id="info-div">
       <h1>Info</h1>
       <h4>(May 2016 to April 2017)</h4>
-      <hr>
+      <hr />
+      <h2>Location name:</h2>
+      <h3 id="loc_name"></h3>
+      <hr />
       <h2>Latitude:</h2>
       <h3 id="lat"></h3>
-      <hr>
+      <hr />
       <h2>Longitude:</h2>
       <h3 id="lng"></h3>
-      <hr>
+      <hr />
       <h2>Number of crimes:</h2>
       <h3 id="num_of_crimes"></h3>
-      <hr>
+      <hr />
       <h2>Most popular crime:</h2>
       <h3 id="popular_crime"></h3>
-      <hr>
+      <hr />
       <input type="button" onclick="display_help()" value="Help">
-      <hr>
+      <hr />
     </div>
 
     <div id="google_map"></div>
