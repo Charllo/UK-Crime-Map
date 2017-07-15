@@ -8,6 +8,7 @@ $(document).ready(function(){
   });
 });
 
+// - - - Spacer - - - //
 
 // Maps JS API stuff
 var police_api_dates = [
