@@ -19,7 +19,6 @@ var marker_positions = []; // So there aren't multiple markers in the same place
 var user_lat = 52.358409; // Random default location
 var user_lng = -1.549072;
 
-// Maps JS API stuff below here
 function clear_markers(){
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
