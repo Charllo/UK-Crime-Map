@@ -1,16 +1,16 @@
-var police_api_shafts = [
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-05",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-06",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-07",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-08",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-09",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-10",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-11",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-12",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-01",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-02",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-03",
-  "http://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-04",
+var police_api_reqs = [
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-05",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-06",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-07",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-08",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-09",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-10",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-11",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2016-12",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-01",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-02",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-03",
+  "https://data.police.uk/api/crimes-street/all-crime?lat=", "&lng=", "&date=2017-04",
 ]
 
 var markers = [];
@@ -40,7 +40,7 @@ function create_crime_markers(lat, lng, map_obj) {
 
   // a < 36 because it goes up in 3's, and 3 * 12 requests = 36
   for (var a = 0; a < 36; a += 3) {
-    var request = police_api_shafts[a] + lat + police_api_shafts[a+1] + lng + police_api_shafts[a+2]
+    var request = police_api_reqs[a] + lat + police_api_reqs[a+1] + lng + police_api_reqs[a+2]
     console.log("Getting stats for", request)
 
     $.getJSON(request, function(data) {
