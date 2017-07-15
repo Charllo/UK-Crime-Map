@@ -1,3 +1,15 @@
+// Help button jquery
+$(document).ready(function(){
+  $("#close_help_btn").click(function(){
+      $("#help-div").fadeOut()
+  });
+  $("#show_help_btn").click(function(){
+      $("#help-div").fadeIn();
+  });
+});
+
+
+// Maps JS API stuff
 var police_api_dates = [
   "&date=2016-05",
   "&date=2016-06",
@@ -129,11 +141,4 @@ function map_callback() {
   });
   google.maps.event.addListener(draggable_marker, "dragend", function(){draggable_callback(draggable_marker, map, geocoder);});
   draggable_callback(draggable_marker, map, geocoder); // Trigger first load
-}
-
-function display_help() {
-  document.getElementById("help-div").style.display = "block";
-}
-function close_help() {
-  document.getElementById("help-div").style.display = "none";
 }
