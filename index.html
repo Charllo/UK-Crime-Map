@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crime Stats</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" media="all">  </head>
+  <body>
+
+    <div id="help-div">
+      <h3>Drag the blue marker to a location</h3>
+      <h3>Each red marker is the approximate loaction of a crime</h3>
+      <h3>Multiple red markers can be on top of eachother</h3>
+      <h3>
+        Hover over a red marker to see the most recent crime,
+        and the number of times it has been commited in the whole
+        area
+      </h3>
+      <input type="button" onclick="close_help()" value="Close">
+    </div>
+
+    <div id="info-div">
+      <h1>Info</h1>
+      <h4>(May 2016 to April 2017)</h4>
+      <hr>
+      <h2>Latitude:</h2>
+      <h3 id="lat"></h3>
+      <hr>
+      <h2>Longitude:</h2>
+      <h3 id="lng"></h3>
+      <hr>
+      <h2>Number of crimes:</h2>
+      <h3 id="num_of_crimes"></h3>
+      <hr>
+      <h2>Most popular crime:</h2>
+      <h3 id="popular_crime"></h3>
+      <hr>
+      <input type="button" onclick="display_help()" value="Help">
+      <hr>
+    </div>
+
+    <div id="google_map"></div>
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="crimes.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYV9a9mYgFcEeWbcvH7f6eFNCjkgjzBzg&callback=map_callback&libraries=visualization"></script>
+  </body>
+</html
