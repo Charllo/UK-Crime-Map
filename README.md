@@ -9,3 +9,8 @@ Crime markers appear in red, and if you hover over them, it will show you the fi
 Drag the blue marker to a new location to see different areas of crime
 
 Each red marker is only the approximate location of a crime, and not exact
+
+# ToDo
+
+In `crimes.js`, `mode()` is called for every crime found, which causes quite a lot of lag. Find a way for it to only be called
+after all crimes have be found
