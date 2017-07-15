@@ -14,6 +14,7 @@ var police_api_reqs = [
 ]
 
 var markers = [];
+var marker_positions = [];
 
 function clear_markers(){
   for (var i = 0; i < markers.length; i++) {
@@ -77,13 +78,17 @@ function create_crime_markers(lat, lng, map_obj) {
 }
 
 function create_marker(lat, lng, title, map_obj){
-  var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(lat, lng),
-      map: map_obj,
-      animation: google.maps.Animation.DROP,
-      title: title
-  });
-  markers.push(marker);
+  if ([lat, lng] in marker_positions) {
+    // Do nothing, dont need multiple markers in one place
+  } else {
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, lng),
+        map: map_obj,
+        title: title
+    });
+    markers.push(marker);
+    marker_positions.push([lat, lng]);
+  }
 }
 
 function draggable_callback(draggable_marker, map_obj) {
@@ -106,7 +111,6 @@ function map_callback() {
       position: shaftesbury,
       map: map,
       draggable: true,
-      animation: google.maps.Animation.DROP,
       title: "Drag me",
       icon: "blue_marker.png"
   });
