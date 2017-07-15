@@ -19,12 +19,6 @@ var marker_positions = []; // So there aren't multiple markers in the same place
 var user_lat = 52.358409; // Random default location
 var user_lng = -1.549072;
 
-// Get user lat/lng from navigatoin.geolocation
-function get_coords(position) {
-  user_lat = position.coords.latitude;
-  user_lng = position.coords.longitude;
-}
-
 // Maps JS API stuff below here
 function clear_markers(){
   for (var i = 0; i < markers.length; i++) {
@@ -125,11 +119,6 @@ function draggable_callback(draggable_marker, map_obj, geocoder) {
 }
 
 function map_callback() {
-  // Attempt to get users lat/lng
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(get_coords);
-  }
-
   var geocoder = new google.maps.Geocoder;
   var new_location = new google.maps.LatLng(user_lat, user_lng);
   var map_properties = {center: new_location, zoom: 15, mapTypeId: "hybrid"};
