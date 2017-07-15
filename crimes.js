@@ -1,14 +1,3 @@
-// Help button jquery
-$(document).ready(function(){
-  $("#close_help_btn").click(function(){
-      $("#help-div").fadeOut()
-  });
-  $("#show_help_btn").click(function(){
-      $("#help-div").fadeIn();
-  });
-});
-
-// Maps JS API stuff
 var police_api_dates = [
   "&date=2016-05",
   "&date=2016-06",
@@ -27,7 +16,16 @@ var police_api_dates = [
 var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
 var markers = []; // To erase markers later
 var marker_positions = []; // So there aren't multiple markers in the same place
+var user_lat = 52.358409; // Random default location
+var user_lng = -1.549072;
 
+// Get user lat/lng from navigatoin.geolocation
+function get_coords(position) {
+  user_lat = position.coords.latitude;
+  user_lng = position.coords.longitude;
+}
+
+// Maps JS API stuff below here
 function clear_markers(){
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
@@ -127,12 +125,17 @@ function draggable_callback(draggable_marker, map_obj, geocoder) {
 }
 
 function map_callback() {
+  // Attempt to get users lat/lng
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(get_coords);
+  }
+
   var geocoder = new google.maps.Geocoder;
-  var shaftesbury = new google.maps.LatLng(51.0046, -2.198083);
-  var map_properties = {center: shaftesbury, zoom: 15, mapTypeId: "hybrid"};
+  var new_location = new google.maps.LatLng(user_lat, user_lng);
+  var map_properties = {center: new_location, zoom: 15, mapTypeId: "hybrid"};
   var map = new google.maps.Map(document.getElementById("google_map"), map_properties);
   var draggable_marker = new google.maps.Marker({
-      position: shaftesbury,
+      position: new_location,
       map: map,
       draggable: true,
       title: "Drag me",
