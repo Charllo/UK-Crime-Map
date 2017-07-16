@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
+  overflow: hidden;
 }
 
 h2 {
@@ -38,10 +39,10 @@ h3 {
 
 #icon-help-div {
   display: none;
-  top: 30%;
+  top: 40%;
   z-index: 3;
   width: 300px;
-  height: 100%;
+  height: 405px;
   opacity: 0.9;
   overflow: scroll;
 }
