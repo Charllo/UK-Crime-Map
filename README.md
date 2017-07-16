@@ -24,4 +24,4 @@ It is powered using vanilla JS + JQuery 3.2.1
 
 Thanks to [@Cutwell](https://github.com/cutwell) for tidying up the structure and fixing the `mode()` problem
 
-Favicon (the detective icon) by [Icons8](https://icons8.com)
+All custom icons by [Icons8](https://icons8.com)

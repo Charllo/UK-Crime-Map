@@ -14,7 +14,7 @@ var police_api_dates = [
 ]
 
 var custom_icons = {
-  "vehicle-crime": "https://png.icons8.com/car/android/24"
+  "vehicle-crime": "https://png.icons8.com/car-theft/color/48"
 }
 
 var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
