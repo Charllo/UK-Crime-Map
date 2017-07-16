@@ -22,7 +22,7 @@ It is powered using vanilla JS + JQuery 3.2.1
 
 ## Credits
 
-Thanks to [@Cutwell](https://github.com/cutwell) for tidying up the structure and fixing the `mode()` problem
+Thanks to [@Cutwell](https://github.com/cutwell) for tidying up the structure and fixing the `mode()` problem, and helping with several other bugs
 
 All custom icons by [Icons8](https://icons8.com)
 
@@ -31,3 +31,4 @@ All custom icons by [Icons8](https://icons8.com)
  - Add a search bar to find a location by name / address
  - Add a "my location" button to show the user their current locations statistics
  - Add a statistics window that shows more info about the area
+ - Add filters for different crimes in the `Icons` menu

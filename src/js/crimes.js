@@ -49,7 +49,7 @@ function mode(c) {
   return popular;
 }
 
-function create_crime_markers(lat, lng, map_obj) {
+function create_crime_markers(lat, lng) {
   var num_of_crimes = 0;
   var crimes = {};
   var commited = false;
@@ -75,7 +75,7 @@ function create_crime_markers(lat, lng, map_obj) {
             crimes[cat] = 1;
           }
 
-          create_marker(lat, lng, cat, map_obj);
+          create_marker(lat, lng, cat);
           num_of_crimes++;
         }
       }
@@ -90,7 +90,7 @@ function create_crime_markers(lat, lng, map_obj) {
   }
 }
 
-function create_marker(lat, lng, title, map_obj){
+function create_marker(lat, lng, title){
   var current_lat_lng = lat.toString() + lng.toString();
 
   if (marker_positions.includes(current_lat_lng)) {
@@ -103,7 +103,7 @@ function create_marker(lat, lng, title, map_obj){
     if (title in custom_icons) {custom_icon = custom_icons[title];}
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(lat, lng),
-        map: map_obj,
+        map: map,
         icon: custom_icon,
         title: title
     });
@@ -112,7 +112,7 @@ function create_marker(lat, lng, title, map_obj){
   }
 }
 
-function draggable_callback(draggable_marker, map_obj, geocoder) {
+function draggable_callback() {
   new_lat = draggable_marker.getPosition().lat()
   new_lng = draggable_marker.getPosition().lng()
 
@@ -121,7 +121,7 @@ function draggable_callback(draggable_marker, map_obj, geocoder) {
 
   console.log(new_lat, new_lng);
   clear_markers();
-  create_crime_markers(new_lat, new_lng, map_obj);
+  create_crime_markers(new_lat, new_lng);
 
   geocoder.geocode({"location": {lat: new_lat, lng: new_lng}}, function(results, status) {
    if (status === "OK") {
@@ -136,25 +136,25 @@ function draggable_callback(draggable_marker, map_obj, geocoder) {
  });
 }
 
-function clicked_move(loc, draggable_marker, map, geocoder) {
+function clicked_move(loc) {
   // Called when user left clicks, set new blue marker loc then find crimes
   draggable_marker.setPosition(loc);
-  draggable_callback(draggable_marker, map, geocoder);
+  draggable_callback();
 }
 
 function map_callback() {
-  var geocoder = new google.maps.Geocoder;
+  geocoder = new google.maps.Geocoder;
   var new_location = new google.maps.LatLng(user_lat, user_lng);
   var map_properties = {center: new_location, zoom: 15, mapTypeId: "hybrid", zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL, position: google.maps.ControlPosition.LEFT_BOTTOM}, streetViewControlOptions:{position: google.maps.ControlPosition.LEFT_BOTTOM}};
-  var map = new google.maps.Map(document.getElementById("google_map"), map_properties);
-  var draggable_marker = new google.maps.Marker({
+  map = new google.maps.Map(document.getElementById("google_map"), map_properties);
+  draggable_marker = new google.maps.Marker({
       position: new_location,
       map: map,
       draggable: true,
       title: "Drag me",
       icon: "src/img/blue_marker.png"
   });
-  google.maps.event.addListener(draggable_marker, "dragend", function() {draggable_callback(draggable_marker, map, geocoder);});
-  google.maps.event.addListener(map, "click", function(event) {clicked_move(event.latLng, draggable_marker, map, geocoder);});
-  draggable_callback(draggable_marker, map, geocoder); // Trigger first load
+  google.maps.event.addListener(draggable_marker, "dragend", function() {draggable_callback();});
+  google.maps.event.addListener(map, "click", function(event) {clicked_move(event.latLng);});
+  draggable_callback(); // Trigger first load
 }
