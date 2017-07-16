@@ -13,6 +13,10 @@ var police_api_dates = [
   "&date=2017-04",
 ]
 
+var custom_icons = {
+  "vehicle-crime": "https://png.icons8.com/car/android/24"
+}
+
 var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
 var markers = []; // To erase markers later
 var marker_positions = []; // So there aren't multiple markers in the same place
@@ -80,16 +84,24 @@ function create_crime_markers(lat, lng, map_obj) {
 }
 
 function create_marker(lat, lng, title, map_obj){
-  if ([lat, lng] in marker_positions) {
+  var current_lat_lng = lat.toString() + lng.toString();
+
+  if (marker_positions.includes(current_lat_lng)) {
     // Do nothing, dont need multiple markers in one place
-  } else {
+  }
+
+  else {
+    // Default icon
+    var custom_icon = "https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png";
+    if (title in custom_icons) {custom_icon = custom_icons[title];}
     var marker = new google.maps.Marker({
         position: new google.maps.LatLng(lat, lng),
         map: map_obj,
+        icon: custom_icon,
         title: title
     });
     markers.push(marker);
-    marker_positions.push([lat, lng]);
+    marker_positions.push(current_lat_lng);
   }
 }
 
