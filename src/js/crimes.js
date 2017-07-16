@@ -66,13 +66,13 @@ function create_crime_markers(lat, lng, map_obj) {
 
           create_marker(lat, lng, cat, map_obj);
           num_of_crimes++;
-
         }
       }
-    document.getElementById("popular_crime").innerText = mode(crimes);
-    document.getElementById("num_of_crimes").innerText = num_of_crimes;
     });
-    if (!commited) {
+    if (commited){
+      document.getElementById("num_of_crimes").innerText = num_of_crimes;
+      document.getElementById("popular_crime").innerText = mode(crimes);
+    } else {
       document.getElementById("popular_crime").innerText = "None";
       document.getElementById("num_of_crimes").innerText = 0;
     }
