@@ -41,8 +41,9 @@ h3 {
   top: 20%;
   z-index: 3;
   width: 300px;
-  height: 830px;
+  height: 100%;
   opacity: 0.9;
+  overflow: scroll;
 }
 
 #show_help_btn {
