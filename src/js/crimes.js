@@ -34,6 +34,7 @@ function clear_markers(){
     markers[i].setMap(null);
   }
   markers = [];
+  marker_positions = [];
 }
 
 function mode(c) {
