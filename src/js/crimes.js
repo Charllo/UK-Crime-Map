@@ -117,6 +117,12 @@ function draggable_callback(draggable_marker, map_obj, geocoder) {
  });
 }
 
+function clicked_move(loc, draggable_marker, map, geocoder) {
+  // Called when user left clicks, set new blue marker loc then find crimes
+  draggable_marker.setPosition(loc);
+  draggable_callback(draggable_marker, map, geocoder);
+}
+
 function map_callback() {
   var geocoder = new google.maps.Geocoder;
   var new_location = new google.maps.LatLng(user_lat, user_lng);
@@ -130,6 +136,6 @@ function map_callback() {
       icon: "src/img/blue_marker.png"
   });
   google.maps.event.addListener(draggable_marker, "dragend", function() {draggable_callback(draggable_marker, map, geocoder);});
-  google.maps.event.addListener(map, "click", function(event) {draggable_marker.setPosition(event.latLng);});
+  google.maps.event.addListener(map, "click", function(event) {clicked_move(event.latLng, draggable_marker, map, geocoder);});
   draggable_callback(draggable_marker, map, geocoder); // Trigger first load
 }
