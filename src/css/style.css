@@ -15,6 +15,50 @@ h3 {
   font-size: 15px;
 }
 
+.help-div {
+  position: absolute;
+  left: 45%;
+  margin-left: -150px;
+  margin-top: -150px;
+  background-color: white;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
+
+#help-div {
+  display: block;
+  top: 40%;
+  z-index: 2;
+  width: 300px;
+  height: 405px;
+  opacity: 0.95;
+}
+
+#icon-help-div {
+  display: none;
+  top: 20%;
+  z-index: 3;
+  width: 300px;
+  height: 830px;
+  opacity: 0.9;
+}
+
+#show_help_btn {
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
+
+#show_icon_help_btn {
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
+
 #google_map {
   position: absolute;
   top: 0;
@@ -37,63 +81,15 @@ h3 {
 
 @media only screen and (max-width: 500px) {
   /* Looks nice on mobile */
-    #info-div {
-      position: absolute;
-      height: 100%;
-      width: 30%;
-      left: 70%;
-      overflow: scroll;
-      background-color: white;
-      z-index: 1;
-      text-align: center;
-      opacity: 0.85;
+  #info-div {
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    left: 70%;
+    overflow: scroll;
+    background-color: white;
+    z-index: 1;
+    text-align: center;
+    opacity: 0.85;
   }
-}
-
-#help-div {
-  position: absolute;
-  display: block;
-  z-index: 2;
-  width: 300px;
-  height: 405px;
-  left: 45%;
-  top: 40%;
-  margin-left: -150px;
-  margin-top: -150px;
-  background-color: white;
-  text-align: center;
-  opacity: 0.95;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-#show_help_btn {
-  width: 100px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-size: 15px;
-}
-
-#show_icon_help_btn {
-  width: 100px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-size: 15px;
-}
-
-#icon-help-div {
-  position: absolute;
-  display: none;
-  z-index: 3;
-  width: 300px;
-  height: 830px;
-  left: 45%;
-  top: 20%;
-  margin-left: -150px;
-  margin-top: -150px;
-  background-color: white;
-  text-align: center;
-  opacity: 0.9;
-  padding-left: 10px;
-  padding-right: 10px;
 }
