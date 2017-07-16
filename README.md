@@ -29,6 +29,12 @@ All custom icons by [Icons8](https://icons8.com)
 ## ToDo
 
  - Add a search bar to find a location by name / address
- - Add a "my location" button to show the user their current locations statistics
+ - Add FAQ button/menu
  - Add a statistics window that shows more info about the area
  - Add filters for different crimes in the `Icons` menu
+
+## Changelog
+
+ - Added custom icons
+ - Added "My Location" button
+ - Fixed various lag related bugs

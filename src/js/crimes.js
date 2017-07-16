@@ -11,7 +11,7 @@ var police_api_dates = [
   "&date=2017-02",
   "&date=2017-03",
   "&date=2017-04",
-]
+];
 
 var custom_icons = {
   "vehicle-crime": "https://png.icons8.com/car-theft/color/48",
@@ -21,7 +21,7 @@ var custom_icons = {
   "criminal-damage-arson": "https://png.icons8.com/fire-station/color/48",
   "drugs": "https://png.icons8.com/syringe/ultraviolet/40",
   "violent-crime": "https://png.icons8.com/fist/color/48"
-}
+};
 
 var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
 var markers = []; // To erase markers later
@@ -112,12 +112,11 @@ function create_marker(lat, lng, title){
   }
 }
 
-function draggable_callback() {
-  new_lat = draggable_marker.getPosition().lat()
-  new_lng = draggable_marker.getPosition().lng()
+function draggable_callback(loc) {
+  if (loc != undefined) {draggable_marker.setPosition(loc);}
 
-  document.getElementById("lat").innerText = new_lat;
-  document.getElementById("lng").innerText = new_lng;
+  new_lat = draggable_marker.getPosition().lat();
+  new_lng = draggable_marker.getPosition().lng();
 
   console.log(new_lat, new_lng);
   clear_markers();
@@ -136,13 +135,8 @@ function draggable_callback() {
  });
 }
 
-function clicked_move(loc) {
-  // Called when user left clicks, set new blue marker loc then find crimes
-  draggable_marker.setPosition(loc);
-  draggable_callback();
-}
-
 function map_callback() {
+  // Without var = set to global scope
   geocoder = new google.maps.Geocoder;
   var new_location = new google.maps.LatLng(user_lat, user_lng);
   var map_properties = {center: new_location, zoom: 15, mapTypeId: "hybrid", zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL, position: google.maps.ControlPosition.LEFT_BOTTOM}, streetViewControlOptions:{position: google.maps.ControlPosition.LEFT_BOTTOM}};
@@ -155,6 +149,36 @@ function map_callback() {
       icon: "src/img/blue_marker.png"
   });
   google.maps.event.addListener(draggable_marker, "dragend", function() {draggable_callback();});
-  google.maps.event.addListener(map, "click", function(event) {clicked_move(event.latLng);});
+  google.maps.event.addListener(map, "click", function(event) {draggable_callback(event.latLng);});
   draggable_callback(); // Trigger first load
+}
+
+// Location stuff
+function get_my_loc(){
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success_callback, error_callback);
+  }
+}
+
+function success_callback(position) {
+  var new_location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  draggable_callback(new_location);
+  map.panTo(new_location);
+}
+
+function error_callback(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      alert("User denied the request for Geolocation :(");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Your location information is unavailable");
+      break;
+    case error.TIMEOUT:
+      alert("The request to get your location timed out");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("An unknown error in finding your location occurred");
+      break;
+  }
 }

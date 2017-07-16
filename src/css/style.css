@@ -67,6 +67,13 @@ h3 {
   font-size: 15px;
 }
 
+#my_location_btn {
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
+
 #google_map {
   position: absolute;
   top: 0;
