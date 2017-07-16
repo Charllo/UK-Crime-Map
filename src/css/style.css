@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+#google_map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+#info-div {
+  position: absolute;
+  height: 100%;
+  width: 15%;
+  left: 85%;
+  overflow: scroll;
+  background-color: white;
+  z-index: 1;
+  text-align: center;
+  opacity: 0.75;
+}
+
+#info-div {
+
+}
+
+#help-div{
+  position: absolute;
+  display: block;
+  z-index: 1;
+  width: 300px;
+  height: 355px;
+  left: 45%;
+  top: 40%;
+  margin-left: -150px;
+  margin-top: -150px;
+  background-color: white;
+  text-align: center;
+  opacity: 0.9;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#show_help_btn {
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
