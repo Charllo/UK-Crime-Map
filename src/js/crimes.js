@@ -67,10 +67,10 @@ function create_crime_markers(lat, lng, map_obj) {
           create_marker(lat, lng, cat, map_obj);
           num_of_crimes++;
 
-          document.getElementById("popular_crime").innerText = mode(crimes);
-          document.getElementById("num_of_crimes").innerText = num_of_crimes;
         }
       }
+    document.getElementById("popular_crime").innerText = mode(crimes);
+    document.getElementById("num_of_crimes").innerText = num_of_crimes;
     });
     if (!commited) {
       document.getElementById("popular_crime").innerText = "None";
@@ -120,14 +120,14 @@ function draggable_callback(draggable_marker, map_obj, geocoder) {
 function map_callback() {
   var geocoder = new google.maps.Geocoder;
   var new_location = new google.maps.LatLng(user_lat, user_lng);
-  var map_properties = {center: new_location, zoom: 15, mapTypeId: "hybrid"};
+  var map_properties = {center: new_location, zoom: 15, mapTypeId: "hybrid", zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL, position: google.maps.ControlPosition.LEFT_BOTTOM}, streetViewControlOptions:{position: google.maps.ControlPosition.LEFT_BOTTOM}};
   var map = new google.maps.Map(document.getElementById("google_map"), map_properties);
   var draggable_marker = new google.maps.Marker({
       position: new_location,
       map: map,
       draggable: true,
       title: "Drag me",
-      icon: "blue_marker.png"
+      icon: "src/img/blue_marker.png"
   });
   google.maps.event.addListener(draggable_marker, "dragend", function(){draggable_callback(draggable_marker, map, geocoder);});
   draggable_callback(draggable_marker, map, geocoder); // Trigger first load

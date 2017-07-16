@@ -28,6 +28,7 @@ h3 {
   height: 100%;
   width: 15%;
   left: 85%;
+  overflow: scroll;
   background-color: white;
   z-index: 1;
   text-align: center;
