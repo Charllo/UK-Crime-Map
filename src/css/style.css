@@ -35,7 +35,7 @@ h3 {
   opacity: 0.75;
 }
 
-#help-div{
+#help-div {
   position: absolute;
   display: block;
   z-index: 1;
@@ -57,4 +57,28 @@ h3 {
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 15px;
+}
+
+#show_icon_help_btn {
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
+
+#icon-help-div {
+  position: absolute;
+  display: none;
+  z-index: 2;
+  width: 300px;
+  height: 830px;
+  left: 45%;
+  top: 20%;
+  margin-left: -150px;
+  margin-top: -150px;
+  background-color: white;
+  text-align: center;
+  opacity: 0.9;
+  padding-left: 10px;
+  padding-right: 10px;
 }

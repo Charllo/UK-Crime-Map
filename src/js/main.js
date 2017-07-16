@@ -6,4 +6,11 @@ $(document).ready(function(){
   $("#show_help_btn").click(function(){
       $("#help-div").fadeIn();
   });
+
+  $("#close_icon_help_btn").click(function(){
+      $("#icon-help-div").fadeOut()
+  });
+  $("#show_icon_help_btn").click(function(){
+      $("#icon-help-div").fadeIn();
+  });
 });

@@ -14,7 +14,13 @@ var police_api_dates = [
 ]
 
 var custom_icons = {
-  "vehicle-crime": "https://png.icons8.com/car-theft/color/48"
+  "vehicle-crime": "https://png.icons8.com/car-theft/color/48",
+  "other-theft": "https://png.icons8.com/pickpocket/color/48",
+  "theft-from-the-person": "https://png.icons8.com/pickpocket/color/48",
+  "burglary": "https://png.icons8.com/ski-mask/office/40",
+  "criminal-damage-arson": "https://png.icons8.com/fire-station/color/48",
+  "drugs": "https://png.icons8.com/syringe/ultraviolet/40",
+  "violent-crime": "https://png.icons8.com/fist/color/48"
 }
 
 var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
