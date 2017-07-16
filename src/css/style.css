@@ -37,16 +37,16 @@ h3 {
 
 @media only screen and (max-width: 500px) {
   /* Looks nice on mobile */
-  #info-div {
-    position: absolute;
-    height: 100%;
-    width: 30%;
-    left: 70%;
-    overflow: scroll;
-    background-color: white;
-    z-index: 1;
-    text-align: center;
-    opacity: 0.85;
+    #info-div {
+      position: absolute;
+      height: 100%;
+      width: 30%;
+      left: 70%;
+      overflow: scroll;
+      background-color: white;
+      z-index: 1;
+      text-align: center;
+      opacity: 0.85;
   }
 }
 
