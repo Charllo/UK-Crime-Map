@@ -129,6 +129,7 @@ function map_callback() {
       title: "Drag me",
       icon: "src/img/blue_marker.png"
   });
-  google.maps.event.addListener(draggable_marker, "dragend", function(){draggable_callback(draggable_marker, map, geocoder);});
+  google.maps.event.addListener(draggable_marker, "dragend", function() {draggable_callback(draggable_marker, map, geocoder);});
+  google.maps.event.addListener(map, "click", function(event) {draggable_marker.setPosition(event.latLng);});
   draggable_callback(draggable_marker, map, geocoder); // Trigger first load
 }
