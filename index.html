@@ -2,11 +2,16 @@
 <html>
   <head>
     <title>Crime Stats</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="src/css/style.css" rel="stylesheet" media="all">
+
     <!-- Detective icon by Icons8 -->
     <link rel="shortcut icon" type="image/png" href="https://png.icons8.com/detective/android/24"/>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="src/css/style.css" rel="stylesheet" media="all">
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="src/js/main.js"></script>
   </head>
@@ -35,29 +40,105 @@
         <br />
         <a href="https://icons8.com">Icons by Icons8</a>
       </h3>
+      <hr />
       <input id="close_help_btn" type="button" value="Close">
     </div>
 
-    <div id="icon-help-div" class="help-div">
+    <div id="icon-help-div" class="help-div container-fluid">
+      <!-- So many divs... -->
       <h2>Icons:</h2>
-      <br />
-      <h3>Vehicle crime</h3>
-      <img src="https://png.icons8.com/car-theft/color/48"/>
-      <h3>Other theft / Theft from person</h3>
-      <img src="https://png.icons8.com/pickpocket/color/48"/>
-      <h3>Burglary</h3>
-      <img src="https://png.icons8.com/ski-mask/office/40"/>
-      <h3>Criminal damage (arson)</h3>
-      <img src="https://png.icons8.com/fire-station/color/48"/>
-      <h3>Drugs</h3>
-      <img src="https://png.icons8.com/syringe/ultraviolet/40"/>
-      <h3>Violent crime</h3>
-      <img src="https://png.icons8.com/fist/color/48"/>
-      <h3>Other</h3>
-      <img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png"/>
-      <br />
-      <br />
-      <br />
+
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Vehicle crime</h3>
+        </div>
+        <div class="col-sm-6">
+          <img src="https://png.icons8.com/car-theft/color/48"/>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Other theft / Theft from person</h3>
+        </div>
+        <div class="col-sm-6">
+          <img src="https://png.icons8.com/pickpocket/color/48"/>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Burglary</h3>
+        </div>
+        <div class="col-sm-6">
+          <img src="https://png.icons8.com/ski-mask/office/40"/>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Criminal damage (arson)</h3>
+        </div>
+        <div class="col-sm-6">
+          <img src="https://png.icons8.com/fire-station/color/48"/>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Drugs</h3>
+        </div>
+        <div class="col-sm-6">
+          <img src="https://png.icons8.com/syringe/ultraviolet/40"/>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Violent crime</h3>
+        </div>
+        <div class="col-sm-6">
+          <img src="https://png.icons8.com/fist/color/48"/>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Shoplifting</h3>
+        </div>
+        <div class="col-sm-6">
+          <img src="https://png.icons8.com/shopping-cart/color/48"/>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Bicycle theft</h3>
+        </div>
+        <div class="col-sm-6">
+          <img src="https://png.icons8.com/bicycle/color/48"/>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Other</h3>
+        </div>
+        <div class="col-sm-6">
+          <img src="https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png"/>
+        </div>
+      </div>
+
+      <hr />
       <input id="close_icon_help_btn" type="button" value="Close">
     </div>
 

@@ -32,7 +32,7 @@ h3 {
   top: 40%;
   z-index: 2;
   width: 300px;
-  height: 405px;
+  height: 410px;
   opacity: 0.95;
 }
 
@@ -41,7 +41,7 @@ h3 {
   top: 20%;
   z-index: 3;
   width: 300px;
-  height: 80%;
+  height: 90%;
   opacity: 0.9;
   overflow: scroll;
 }
@@ -51,6 +51,14 @@ h3 {
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 15px;
+}
+
+#close_help_btn {
+  position: relative;
+  top: -10px;
+  width: 100%;
+  height: 10%;
+  border-radius: 5px;
 }
 
 #show_icon_help_btn {
@@ -125,7 +133,7 @@ h3 {
     z-index: 3;
     width: 300px;
     height: 80%;
-    opacity: 0.9;
+    opacity: 1;
     overflow: scroll;
   }
 }

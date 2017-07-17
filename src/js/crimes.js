@@ -20,7 +20,9 @@ var custom_icons = {
   "burglary": "https://png.icons8.com/ski-mask/office/40",
   "criminal-damage-arson": "https://png.icons8.com/fire-station/color/48",
   "drugs": "https://png.icons8.com/syringe/ultraviolet/40",
-  "violent-crime": "https://png.icons8.com/fist/color/48"
+  "violent-crime": "https://png.icons8.com/fist/color/48",
+  "shoplifting": "https://png.icons8.com/shopping-cart/color/48",
+  "bicycle-theft": "https://png.icons8.com/bicycle/color/48"
 };
 
 var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
@@ -65,7 +67,7 @@ function create_crime_markers(lat, lng) {
         commited = true;
 
         for (var i = 0; i < data_len; i++) {
-          cat = data[i]["category"]
+          cat = data[i]["category"];
           lat = data[i]["location"]["latitude"];
           lng = data[i]["location"]["longitude"];
 
@@ -74,6 +76,8 @@ function create_crime_markers(lat, lng) {
           } else {
             crimes[cat] = 1;
           }
+
+          console.log(crimes);
 
           create_marker(lat, lng, cat);
           num_of_crimes++;
