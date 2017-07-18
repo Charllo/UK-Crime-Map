@@ -33,6 +33,7 @@ All custom icons by [Icons8](https://icons8.com)
  - Add a statistics window that shows more info about the area
  - Add filters for different crimes in the `Icons` menu
  - Fix `mode()` - it's not working properly
+ - Show a loading symbol when retrieving data from police API
 
 ## Changelog
 
