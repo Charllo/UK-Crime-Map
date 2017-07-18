@@ -60,7 +60,7 @@ function create_crime_markers(lat, lng) {
     var request = police_api_base_url + lat + "&lng=" + lng + police_api_dates[a]
     console.log("Getting stats for", request)
 
-    $.getJSON(request, function(data) {
+    get_JSON(request, function(data) {
       var data_len = data.length;
 
       if (data[0] != undefined) {
