@@ -125,23 +125,10 @@ function draggable_callback(loc) {
   console.log(new_lat, new_lng);
   clear_markers();
   create_crime_markers(new_lat, new_lng);
-
-  geocoder.geocode({"location": {lat: new_lat, lng: new_lng}}, function(results, status) {
-   if (status === "OK") {
-     if (results[1]) {
-       document.getElementById("loc_name").innerText = results[1].formatted_address;
-     } else {
-       document.getElementById("loc_name").innerText = "No results found";
-     }
-   } else {
-     document.getElementById("loc_name").innerText = "Geocoder failed: "+status;
-   }
- });
 }
 
 function map_callback() {
   // Without var = set to global scope
-  geocoder = new google.maps.Geocoder;
   var new_location = new google.maps.LatLng(user_lat, user_lng);
   var map_properties = {center: new_location, zoom: 15, mapTypeId: "hybrid", zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL, position: google.maps.ControlPosition.LEFT_BOTTOM}, streetViewControlOptions:{position: google.maps.ControlPosition.LEFT_BOTTOM}};
   map = new google.maps.Map(document.getElementById("google_map"), map_properties);

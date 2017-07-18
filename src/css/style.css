@@ -15,6 +15,19 @@ h3 {
   font-size: 15px;
 }
 
+input[type=text] {
+    width: 60%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url("https://png.icons8.com/detective/android/24");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+}
+
 .help-div {
   position: absolute;
   left: 45%;
@@ -25,6 +38,14 @@ h3 {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 10px;
+}
+
+#search_btn{
+  position: relative;
+  top: -1px;
+  padding: 10px;
+  border-radius: 2px;
+  height: 50px;
 }
 
 #help-div {
