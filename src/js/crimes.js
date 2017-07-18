@@ -77,8 +77,6 @@ function create_crime_markers(lat, lng) {
             crimes[cat] = 1;
           }
 
-          console.log(crimes);
-
           create_marker(lat, lng, cat);
           num_of_crimes++;
         }
