@@ -28,10 +28,11 @@ All custom icons by [Icons8](https://icons8.com)
 
 ## ToDo
 
- - Add a search bar to find a location by name / address
+ - Replcae `current location` with search bar to find a location by name / address
  - Add FAQ button/menu
  - Add a statistics window that shows more info about the area
  - Add filters for different crimes in the `Icons` menu
+ - Fix `mode()` - it's not working properly
 
 ## Changelog
 
