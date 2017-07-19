@@ -28,7 +28,7 @@ All custom icons by [Icons8](https://icons8.com)
 
 ## ToDo
 
- - Replcae `current location` with search bar to find a location by name / address
+ - Replace `current location` with search bar to find a location by name / address
  - Add FAQ button/menu
  - Add a statistics window that shows more info about the area
  - Add filters for different crimes in the `Icons` menu
@@ -38,5 +38,7 @@ All custom icons by [Icons8](https://icons8.com)
 ## Changelog
 
  - Added custom icons
- - Added "My Location" button
  - Fixed various lag related bugs
+ - Changed icon help menu to bootstrap grid
+ - Added "My Location" button
+ - Removed JQuery dependency

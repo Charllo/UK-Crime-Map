@@ -3,6 +3,18 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function mode(c) {
+  // Large complexity, but, meh
+  var previous = 0;
+  var popular = "";
+  for (var i in c) {
+    if (c[i] > previous) {
+      popular = i;
+    }
+  }
+  return popular;
+}
+
 // async because if not, sleep cant be awaited therefore wont work
 async function fade_out(id){
   var e = document.getElementById(id);
