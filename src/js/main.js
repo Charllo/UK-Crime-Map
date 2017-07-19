@@ -1,16 +1,30 @@
-// For the help/icon menu fade in/out
-$(document).ready(function(){
-  $("#close_help_btn").click(function(){
-      $("#help-div").fadeOut()
-  });
-  $("#show_help_btn").click(function(){
-      $("#help-div").fadeIn();
-  });
+function sleep(ms) {
+  // https://stackoverflow.com/a/39914235/6396652
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-  $("#close_icon_help_btn").click(function(){
-      $("#icon-help-div").fadeOut()
-  });
-  $("#show_icon_help_btn").click(function(){
-      $("#icon-help-div").fadeIn();
-  });
-});
+// async because if not, sleep cant be awaited therefore wont work
+async function fade_out(id){
+  var e = document.getElementById(id);
+  var op = window.getComputedStyle(e).getPropertyValue("opacity");
+  while (op > 0.05){
+    op -= 0.05;
+    e.style.opacity = op;
+    await sleep(10);
+  }
+  e.style.opacity = 0;
+  e.style.display = "none";
+}
+
+async function fade_in(id){
+  var e = document.getElementById(id);
+  var op_s = window.getComputedStyle(e).getPropertyValue("opacity");
+  op = parseFloat(op_s);  // Starts as a string for some reason
+  e.style.display = "block";
+  while (op < 0.95){
+    op += 0.05;
+    e.style.opacity = op;
+    await sleep(10);
+  }
+  e.style.opacity = 1;
+}

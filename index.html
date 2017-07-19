@@ -12,7 +12,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="src/css/style.css" rel="stylesheet" media="all">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="src/js/main.js"></script>
     <script src="src/js/requests.js"></script>
   </head>
@@ -42,7 +41,7 @@
         <a href="https://icons8.com">Icons by Icons8</a>
       </h3>
       <hr />
-      <input id="close_help_btn" type="button" value="Close">
+      <input id="close_help_btn" type="button" value="Close" onclick="fade_out('help-div')">
     </div>
 
     <div id="icon-help-div" class="help-div container-fluid">
@@ -140,7 +139,7 @@
       </div>
 
       <hr />
-      <input id="close_icon_help_btn" type="button" value="Close">
+      <input id="close_icon_help_btn" type="button" value="Close" onclick="fade_out('icon-help-div')">
     </div>
 
     <div id="info-div">
@@ -159,9 +158,9 @@
       <hr />
       <input id="my_location_btn" type="button" value="My Location" onclick="get_my_loc()">
       <hr />
-      <input id="show_icon_help_btn" type="button" value="Icons">
+      <input id="show_icon_help_btn" type="button" value="Icons" onclick="fade_in('icon-help-div')">
       <hr />
-      <input id="show_help_btn" type="button" value="Help">
+      <input id="show_help_btn" type="button" value="Help" onclick="fade_in('help-div')">
       <hr />
     </div>
 

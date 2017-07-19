@@ -63,7 +63,7 @@ input[type=text] {
   z-index: 3;
   width: 300px;
   height: 90%;
-  opacity: 0.9;
+  opacity: 0;
   overflow: scroll;
 }
 
@@ -142,7 +142,6 @@ input[type=text] {
     z-index: 3;
     width: 300px;
     height: 80%;
-    opacity: 0.9;
     overflow: scroll;
   }
 }
@@ -154,7 +153,6 @@ input[type=text] {
     z-index: 3;
     width: 300px;
     height: 80%;
-    opacity: 1;
     overflow: scroll;
   }
 }
