@@ -37,12 +37,25 @@ function create_crime_markers(lat, lng) {
 
     get_JSON(a, request, function(data, url, iter) {
       /*
+       * STILL NEED TO FIX:
+       * Find a way of waiting for all requests to complete before checking
+       * if iter is at the max number
+       */
+
+      /*
        * Why does the url and iter need to be passed into and returned from
        * get_JSON for this to work, but num_of_crimes, commited and crimes
        * doesent? Who knows, but they do...
+       */
+
+      /*
+      This will always print the "&date=2017-04" request
+      console.log(request);
+
+      Wheras when put into get_JSON, and returned exactly the same, it prints the correct url:
+      console.log(url);
       */
 
-      console.log(request);
       console.log("Getting stats for", url)
       var data_len = data.length;
 
