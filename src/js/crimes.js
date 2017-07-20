@@ -36,6 +36,13 @@ function create_crime_markers(lat, lng) {
     var request = police_api_base_url + lat + "&lng=" + lng + police_api_dates[a]
 
     get_JSON(a, request, function(data, url, iter) {
+      /*
+       * Why does the url and iter need to be passed into and returned from
+       * get_JSON for this to work, but num_of_crimes, commited and crimes
+       * doesent? Who knows, but they do...
+      */
+
+      console.log(request);
       console.log("Getting stats for", url)
       var data_len = data.length;
 
