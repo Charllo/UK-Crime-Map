@@ -30,17 +30,17 @@ var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?la
 function create_crime_markers(lat, lng) {
   var num_of_crimes = 0;
   var crimes = {};
-  var commited = false;
+  var committed = false;
 
   for (var a = 0; a < 12; a++) {
     var request = police_api_base_url + lat + "&lng=" + lng + police_api_dates[a]
-    console.log("Getting stats for", request)
 
-    get_JSON(request, function(data) {
+    get_JSON(a, request, function(data, url, iter) {
+      console.log("Getting stats for", url)
       var data_len = data.length;
 
       if (data[0] != undefined) {
-        commited = true;
+        committed = true;
 
         for (var i = 0; i < data_len; i++) {
           cat = data[i]["category"];
@@ -55,15 +55,21 @@ function create_crime_markers(lat, lng) {
 
           create_marker(lat, lng, cat);
           num_of_crimes++;
+          document.getElementById("num_of_crimes").innerText = num_of_crimes;
         }
       }
-      if (commited){
-        document.getElementById("num_of_crimes").innerText = num_of_crimes;
-        document.getElementById("popular_crime").innerText = mode(crimes);
-      } else {
-        document.getElementById("popular_crime").innerText = "None";
-        document.getElementById("num_of_crimes").innerText = 0;
+
+      if (iter == 11){
+        console.log("Requests done");
+        console.log(crimes);
+        console.log(Object.keys(crimes).length);
+        if (committed){
+          document.getElementById("popular_crime").innerText = mode(crimes);
+        } else {
+          document.getElementById("popular_crime").innerText = "None";
+        }
       }
+
     });
   }
 }

@@ -4,7 +4,9 @@ function sleep(ms) {
 }
 
 function mode(c) {
-  // Large complexity, but, meh
+
+  // NOT WORKING
+
   var previous = 0;
   var popular = "";
   for (var i in c) {
