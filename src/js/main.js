@@ -4,17 +4,18 @@ function sleep(ms){
 }
 
 function mode(c){
+  var popular_str = "";
+  var popular_num = 0;
 
-  // NOT WORKING
-
-  var previous = 0;
-  var popular = "";
-  for (var i in c){
-    if (c[i] > previous){
-      popular = i;
+  for (item in c){
+    num = c[item]
+    if (num > popular_num){
+      popular_str = item;
+      popular_num = num;
     }
   }
-  return popular;
+
+  return popular_str;
 }
 
 // async because if not, sleep cant be awaited therefore wont work
