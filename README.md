@@ -4,11 +4,11 @@ This map displays all street-level crimes committed from May 2016 to  April 2017
 
 The starting location was randomly chosen
 
-Crime markers appear in red, and if you hover over them, it will show you the first crime recorded in that specific location
+If you hover over a crime marker, it will show you the first crime recorded in that specific location
 
 Click a new location on the map or drag the blue marker to a new location to see different areas of crime
 
-Each red marker is only the approximate location of a crime, and not exact
+Each crime marker is only the approximate location of a crime, and not exact
 
 
 ## Technical details
