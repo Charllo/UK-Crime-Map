@@ -22,7 +22,9 @@ var custom_icons = {
   "drugs": "https://png.icons8.com/syringe/ultraviolet/40",
   "violent-crime": "https://png.icons8.com/fist/color/48",
   "shoplifting": "https://png.icons8.com/shopping-cart/color/48",
-  "bicycle-theft": "https://png.icons8.com/bicycle/color/48"
+  "bicycle-theft": "https://png.icons8.com/bicycle/color/48",
+  "possession-of-weapons": "https://png.icons8.com/gun/color/48",
+  "robbery": "https://png.icons8.com/robbery/office/40"
 };
 
 var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
@@ -30,14 +32,6 @@ var completed_requests = 0;
 var num_of_crimes = 0;
 var crimes = {};
 var committed = false;
-
-
-// show_by_id("num_of_crimes_load_img");
-// hide_by_id("num_of_crimes_load_img");
-
-// show_by_id("popular_crime_load_img");
-// hide_by_id("popular_crime_load_img");
-
 
 function JSON_callback(data){
   completed_requests++;

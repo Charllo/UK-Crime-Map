@@ -48,35 +48,6 @@ function clear_markers(){
   marker_positions = [];
 }
 
-function get_my_loc(){
-  if (navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(success_callback, error_callback);
-  }
-}
-
-function success_callback(position){
-  var new_location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  draggable_callback(new_location);
-  map.panTo(new_location);
-}
-
-function error_callback(error){
-  switch(error.code){
-    case error.PERMISSION_DENIED:
-      alert("Denied request for Geolocation");
-      break;
-    case error.POSITION_UNAVAILABLE:
-      alert("Your location information is unavailable");
-      break;
-    case error.TIMEOUT:
-      alert("The request to get your location timed out");
-      break;
-    case error.UNKNOWN_ERROR:
-      alert("An unknown error in finding your location occurred");
-      break;
-  }
-}
-
 function create_marker(lat, lng, title){
   var current_lat_lng = lat.toString() + lng.toString();
 
@@ -108,4 +79,33 @@ function draggable_callback(loc){
   console.log(new_lat, new_lng);
   clear_markers();
   create_crime_markers(new_lat, new_lng);
+}
+
+function get_my_loc(){
+  if (navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(success_callback, error_callback);
+  }
+}
+
+function success_callback(position){
+  var new_location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  draggable_callback(new_location);
+  map.panTo(new_location);
+}
+
+function error_callback(error){
+  switch(error.code){
+    case error.PERMISSION_DENIED:
+      alert("Denied request for Geolocation");
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Your location information is unavailable");
+      break;
+    case error.TIMEOUT:
+      alert("The request to get your location timed out");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("An unknown error in finding your location occurred");
+      break;
+  }
 }
