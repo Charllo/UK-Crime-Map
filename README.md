@@ -22,13 +22,12 @@ It is powered using vanilla JS + BootstrapCSS
 
 ## Credits
 
-Thanks to [@Cutwell](https://github.com/cutwell) for tidying up the structure and fixing the `mode()` problem, and helping with several other bugs
+Thanks to [@Cutwell](https://github.com/cutwell) for tidying up the structure and helping with the `mode()` problem, and helping with several other bugs
 
 All custom icons by [Icons8](https://icons8.com)
 
 ## ToDo
 
- - Replace `current location` with search bar to find a location by name / address
  - Add FAQ button/menu
  - Add a statistics window that shows more info about the area
  - Add filters for different crimes in the `Icons` menu
@@ -42,3 +41,4 @@ All custom icons by [Icons8](https://icons8.com)
  - Removed JQuery dependency
  - Fixed `mode()`
  - Show a loading symbol when retrieving data from police API
+ - Replace `current location` with search bar to find a location by name / address
