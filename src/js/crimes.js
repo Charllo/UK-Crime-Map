@@ -26,70 +26,55 @@ var custom_icons = {
 };
 
 var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
+var completed_requests = 0;
+var num_of_crimes = 0;
+var crimes = {};
+var committed = false;
 
-function create_crime_markers(lat, lng) {
-  var num_of_crimes = 0;
-  var crimes = {};
-  var committed = false;
+function JSON_callback(data){
+  completed_requests++;
+  var data_len = data.length;
 
-  for (var a = 0; a < 12; a++) {
+  if (data[0] != undefined){
+    for (var i = 0; i < data_len; i++){
+      cat = data[i]["category"];
+      lat = data[i]["location"]["latitude"];
+      lng = data[i]["location"]["longitude"];
+
+      if (cat in crimes) {
+        crimes[cat]++;
+      } else {
+        crimes[cat] = 1;
+      }
+
+      create_marker(lat, lng, cat);
+      num_of_crimes++;
+      committed = true;
+    }
+  }
+
+  document.getElementById("num_of_crimes").innerText = num_of_crimes;
+
+  if (completed_requests == 12){
+    console.log("Requests done");
+    console.log(crimes);
+    if (committed){
+      document.getElementById("popular_crime").innerText = mode(crimes);
+    } else{
+      document.getElementById("popular_crime").innerText = "None";
+    }
+  }
+}
+
+function create_crime_markers(lat, lng){
+  completed_requests = 0;
+  num_of_crimes = 0;
+  crimes = {};
+  committed = false;
+  document.getElementById("popular_crime").innerText = "Loading...";
+  document.getElementById("num_of_crimes").innerText = "Loading...";
+  for (var a = 0; a < 12; a++){
     var request = police_api_base_url + lat + "&lng=" + lng + police_api_dates[a]
-
-    get_JSON(a, request, function(data, url, iter) {
-      /*
-       * STILL NEED TO FIX:
-       * Find a way of waiting for all requests to complete before checking
-       * if iter is at the max number
-       */
-
-      /*
-       * Why does the url and iter need to be passed into and returned from
-       * get_JSON for this to work, but num_of_crimes, commited and crimes
-       * doesent? Who knows, but they do...
-       */
-
-      /*
-      This will always print the "&date=2017-04" request
-      console.log(request);
-
-      Wheras when put into get_JSON, and returned exactly the same, it prints the correct url:
-      console.log(url);
-      */
-
-      console.log("Getting stats for", url)
-      var data_len = data.length;
-
-      if (data[0] != undefined) {
-        committed = true;
-
-        for (var i = 0; i < data_len; i++) {
-          cat = data[i]["category"];
-          lat = data[i]["location"]["latitude"];
-          lng = data[i]["location"]["longitude"];
-
-          if (cat in crimes) {
-            crimes[cat]++;
-          } else {
-            crimes[cat] = 1;
-          }
-
-          create_marker(lat, lng, cat);
-          num_of_crimes++;
-          document.getElementById("num_of_crimes").innerText = num_of_crimes;
-        }
-      }
-
-      if (iter == 11){
-        console.log("Requests done");
-        console.log(crimes);
-        console.log(Object.keys(crimes).length);
-        if (committed){
-          document.getElementById("popular_crime").innerText = mode(crimes);
-        } else {
-          document.getElementById("popular_crime").innerText = "None";
-        }
-      }
-
-    });
+    get_JSON(request, JSON_callback);
   }
 }

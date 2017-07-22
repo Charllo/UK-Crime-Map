@@ -1,16 +1,16 @@
-function sleep(ms) {
+function sleep(ms){
   // https://stackoverflow.com/a/39914235/6396652
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function mode(c) {
+function mode(c){
 
   // NOT WORKING
 
   var previous = 0;
   var popular = "";
-  for (var i in c) {
-    if (c[i] > previous) {
+  for (var i in c){
+    if (c[i] > previous){
       popular = i;
     }
   }
