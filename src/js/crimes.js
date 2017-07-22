@@ -31,9 +31,18 @@ var num_of_crimes = 0;
 var crimes = {};
 var committed = false;
 
+
+// show_by_id("num_of_crimes_load_img");
+// hide_by_id("num_of_crimes_load_img");
+
+// show_by_id("popular_crime_load_img");
+// hide_by_id("popular_crime_load_img");
+
+
 function JSON_callback(data){
   completed_requests++;
   var data_len = data.length;
+  hide_by_id("num_of_crimes_load_img");
 
   if (data[0] != undefined){
     for (var i = 0; i < data_len; i++){
@@ -58,6 +67,7 @@ function JSON_callback(data){
   if (completed_requests == 12){
     console.log("Requests done");
     console.log(crimes);
+    hide_by_id("popular_crime_load_img");
     if (committed){
       document.getElementById("popular_crime").innerText = mode(crimes);
     } else{
@@ -67,12 +77,14 @@ function JSON_callback(data){
 }
 
 function create_crime_markers(lat, lng){
+  show_by_id("num_of_crimes_load_img");
+  show_by_id("popular_crime_load_img");
   completed_requests = 0;
   num_of_crimes = 0;
   crimes = {};
   committed = false;
-  document.getElementById("popular_crime").innerText = "Loading...";
-  document.getElementById("num_of_crimes").innerText = "Loading...";
+  document.getElementById("popular_crime").innerText = "";
+  document.getElementById("num_of_crimes").innerText = "";
   for (var a = 0; a < 12; a++){
     var request = police_api_base_url + lat + "&lng=" + lng + police_api_dates[a]
     get_JSON(request, JSON_callback);

@@ -17,7 +17,7 @@ The map uses the official [UK Police Data API](https://data.police.uk) to gather
 
 It uses Google's Google Maps Javascript API to provide the mapping, and Google Maps Geocoding API for finding the street/location names
 
-It is powered using vanilla JS + JQuery 3.2.1
+It is powered using vanilla JS + BootstrapCSS
 
 
 ## Credits
@@ -32,7 +32,6 @@ All custom icons by [Icons8](https://icons8.com)
  - Add FAQ button/menu
  - Add a statistics window that shows more info about the area
  - Add filters for different crimes in the `Icons` menu
- - Show a loading symbol when retrieving data from police API
 
 ## Changelog
 
@@ -42,3 +41,4 @@ All custom icons by [Icons8](https://icons8.com)
  - Added "My Location" button
  - Removed JQuery dependency
  - Fixed `mode()`
+ - Show a loading symbol when retrieving data from police API

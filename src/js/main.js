@@ -43,3 +43,11 @@ async function fade_in(id){
   }
   e.style.opacity = 1;
 }
+
+function show_by_id(id){
+  document.getElementById(id).style.display = "block";
+}
+
+function hide_by_id(id){
+  document.getElementById(id).style.display = "none";
+}

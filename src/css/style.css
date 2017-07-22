@@ -40,6 +40,12 @@ input[type=text] {
   border-radius: 10px;
 }
 
+#num_of_crimes_load_img, #popular_crime_load_img{
+  /* start off not showing */
+  display: none;
+  margin: auto;
+}
+
 #search_btn{
   position: relative;
   top: -1px;
