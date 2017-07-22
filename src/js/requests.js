@@ -16,7 +16,7 @@ function get_JSON(url, callback_func){
 /*
 Example:
 
-get_JSON("URL_HERE", function (dataobj) {
+get_JSON("URL_HERE", function (dataobj){
   console.log(dataobj[0].category);
 });
 */

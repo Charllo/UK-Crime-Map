@@ -3,8 +3,9 @@ var marker_positions = []; // So there aren't multiple markers in the same place
 var user_lat = 52.358409; // Random default location
 var user_lng = -1.549072;
 
-function map_callback() {
+function map_callback(){
   // Without var = set to global scope
+  geocoder = new google.maps.Geocoder();
   var new_location = new google.maps.LatLng(user_lat, user_lng);
   var map_properties = {center: new_location, zoom: 15, mapTypeId: "hybrid", zoomControlOptions: {style: google.maps.ZoomControlStyle.SMALL, position: google.maps.ControlPosition.LEFT_BOTTOM}, streetViewControlOptions:{position: google.maps.ControlPosition.LEFT_BOTTOM}};
   map = new google.maps.Map(document.getElementById("google_map"), map_properties);
@@ -15,13 +16,32 @@ function map_callback() {
       title: "Drag me",
       icon: "src/img/blue_marker.png"
   });
-  google.maps.event.addListener(draggable_marker, "dragend", function() {draggable_callback();});
-  google.maps.event.addListener(map, "click", function(event) {draggable_callback(event.latLng);});
+  google.maps.event.addListener(draggable_marker, "dragend", function(){draggable_callback();});
+  google.maps.event.addListener(map, "click", function(event){draggable_callback(event.latLng);});
   draggable_callback(); // Trigger first load
 }
 
+function search(){
+  var address = document.getElementById("search_box").value;
+  if (address != ""){
+    geocoder.geocode( {
+        "address": address,
+        componentRestrictions: {country: "UK"}
+      },
+      function(results, status){
+        if (status == "OK") {
+          var loc = results[0].geometry.location
+          draggable_callback(loc);
+          map.panTo(loc);
+        } else {
+          alert("Cannot perform search, reason: " + status);
+        }
+    });
+  }
+}
+
 function clear_markers(){
-  for (var i = 0; i < markers.length; i++) {
+  for (var i = 0; i < markers.length; i++){
     markers[i].setMap(null);
   }
   markers = [];
@@ -29,19 +49,19 @@ function clear_markers(){
 }
 
 function get_my_loc(){
-  if (navigator.geolocation) {
+  if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition(success_callback, error_callback);
   }
 }
 
-function success_callback(position) {
+function success_callback(position){
   var new_location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   draggable_callback(new_location);
   map.panTo(new_location);
 }
 
-function error_callback(error) {
-  switch(error.code) {
+function error_callback(error){
+  switch(error.code){
     case error.PERMISSION_DENIED:
       alert("Denied request for Geolocation");
       break;
@@ -60,7 +80,7 @@ function error_callback(error) {
 function create_marker(lat, lng, title){
   var current_lat_lng = lat.toString() + lng.toString();
 
-  if (marker_positions.includes(current_lat_lng)) {
+  if (marker_positions.includes(current_lat_lng)){
     // Do nothing, dont need multiple markers in one place
   }
 
@@ -79,7 +99,7 @@ function create_marker(lat, lng, title){
   }
 }
 
-function draggable_callback(loc) {
+function draggable_callback(loc){
   if (loc != undefined) {draggable_marker.setPosition(loc);}
 
   new_lat = draggable_marker.getPosition().lat();
