@@ -32,7 +32,6 @@ All custom icons by [Icons8](https://icons8.com)
  - Add FAQ button/menu
  - Add a statistics window that shows more info about the area
  - Add filters for different crimes in the `Icons` menu
- - Fix `mode()` - it's not working properly
  - Show a loading symbol when retrieving data from police API
 
 ## Changelog
@@ -42,3 +41,4 @@ All custom icons by [Icons8](https://icons8.com)
  - Changed icon help menu to bootstrap grid
  - Added "My Location" button
  - Removed JQuery dependency
+ - Fixed `mode()`
