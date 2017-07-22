@@ -15,7 +15,7 @@ Each red marker is only the approximate location of a crime, and not exact
 
 The map uses the official [UK Police Data API](https://data.police.uk) to gather the location of crimes in a radius around the blue marker
 
-It uses Google's Google Maps Javascript API to provide the mapping, and Google Maps Geocoding API for finding the street/location names
+It uses Google's Google Maps Javascript API to provide the mapping, and Google Maps Geocoding API for searching & finding locations
 
 It is powered using vanilla JS + BootstrapCSS
 
