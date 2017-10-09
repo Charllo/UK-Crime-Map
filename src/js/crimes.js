@@ -11,6 +11,9 @@ var police_api_dates = [
   "&date=2017-02",
   "&date=2017-03",
   "&date=2017-04",
+  "&date=2017-05",
+  "&date=2017-06",
+  "&date=2017-07",
 ];
 
 var custom_icons = {
@@ -24,7 +27,8 @@ var custom_icons = {
   "shoplifting": "https://png.icons8.com/shopping-cart/color/48",
   "bicycle-theft": "https://png.icons8.com/bicycle/color/48",
   "possession-of-weapons": "https://png.icons8.com/gun/color/48",
-  "robbery": "https://png.icons8.com/robbery/office/40"
+  "robbery": "https://png.icons8.com/robbery/office/40",
+  "terrorism": "https://png.icons8.com/jihadis/gun/40"
 };
 
 var police_api_base_url = "https://data.police.uk/api/crimes-street/all-crime?lat=";
